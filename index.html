@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<link rel="shortcut icon" href="./favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<link rel="manifest" href="./site.webmanifest" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Voce del Cettini</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:wght@300;400;600&family=Barlow+Condensed:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111;
+    --white: #fff;
+    --off-white: #f7f7f2;
+    --green: #1a6b3c;
+    --green-light: #e8f5ee;
+    --green-dark: #0d4525;
+    --red: #c0201e;
+    --red-light: #fdf0f0;
+    --gray: #888;
+    --border: #ddd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-bar a { color: #aaa; text-decoration: none; }
+  .top-bar a:hover { color: var(--white); }
+  .top-bar-date { color: #aaa; }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 28px 24px 16px;
+    border-bottom: 4px double var(--black);
+    position: relative;
+  }
+  .masthead::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: var(--red);
+    margin-bottom: 18px;
+  }
+  .masthead-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    color: var(--black);
+    text-transform: uppercase;
+  }
+  .masthead-title span { color: var(--red); }
+  .masthead-subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 8px;
+  }
+  .masthead-tagline {
+    font-family: 'Source Serif 4', serif;
+    font-style: bold;
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+  .hero-img {
+    width: 100%;
+    aspect-ratio: 16/8;
+    object-fit: cover;
+    margin-bottom: 20px;
+    display: block;
+  }
+  /* ── NAV ── */
+  nav {
+    background: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+  nav a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ccc;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-right: 1px solid #222;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+  }
+  nav a:first-child { border-left: 1px solid #222; }
+  nav a:hover, nav a.active { color: var(--white); background: var(--green-dark); }
+  nav a.breaking {
+    color: var(--white);
+    background: var(--red);
+  }
+  nav a.breaking:hover { background: #a01918; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    border-bottom: 3px solid var(--black);
+    padding: 32px 0 28px;
+  }
+
+  /* NEW: 2-column layout: big article + sidebar */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 0;
+  }
+
+  .hero-main {
+    padding-right: 40px;
+    border-right: 1px solid var(--border);
+  }
+
+  .hero-sidebar {
+    padding-left: 28px;
+  }
+
+  .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 2px 8px;
+  }
+  .label-red { color: var(--white); background: var(--red); }
+  .label-green { color: var(--white); background: var(--green); }
+  .label-black { color: var(--white); background: var(--black); }
+
+  /* BIGGER hero headline */
+  .hero-main .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4.5vw, 58px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+  }
+  .hero-main .headline a {
+    color: var(--black);
+    text-decoration: none;
+  }
+  .hero-main .headline a:hover { color: var(--green); }
+
+  /* BIGGER image placeholder */
+  .hero-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/8;
+    background: linear-gradient(135deg, #1a6b3c 0%, #0d4525 40%, #111 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.15);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-img-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.02) 20px,
+      rgba(255,255,255,0.02) 40px
+    );
+  }
+  .hero-img-placeholder.red-bg {
+    background: linear-gradient(135deg, #c0201e 0%, #7a0d0c 40%, #111 100%);
+  }
+
+  /* BIGGER deck text */
+  .deck {
+    font-size: 17px;
+    color: #444;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .byline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .byline span { color: var(--green); font-weight: 700; }
+
+  /* Sidebar */
+  .sidebar-article {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-article:last-child { border-bottom: none; }
+.sidebar-thumb {
+  width: 80px;
+  height: 64px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+  .sidebar-thumb.green { background: linear-gradient(135deg, #1a6b3c, #0d4525); }
+  .sidebar-thumb.red { background: linear-gradient(135deg, #c0201e, #7a0d0c); }
+  .sidebar-thumb.dark { background: linear-gradient(135deg, #333, #111); }
+  .sidebar-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .sidebar-headline a { color: var(--black); text-decoration: none; }
+  .sidebar-headline a:hover { color: var(--green); }
+  .sidebar-meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0 20px;
+  }
+  .section-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .section-header h2.green { color: var(--green); }
+  .section-header h2.red { color: var(--red); }
+  .section-header-line {
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+  }
+  .section-header-line.green { background: var(--green); opacity: 0.3; }
+  .section-header-line.red { background: var(--red); opacity: 0.3; }
+
+  /* ── CATEGORY SECTIONS ── */
+  .category-section {
+    padding: 0 0 32px;
+    border-bottom: 3px solid var(--black);
+    margin-bottom: 0;
+  }
+  .category-section:last-child { border-bottom: none; }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .category-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+.cat-article .thumb {
+  width: 100%;
+  aspect-ratio: 3/2;
+  margin-bottom: 10px;
+  object-fit: cover;
+  display: block;
+}
+  .thumb.g1 { background: linear-gradient(135deg, #1a6b3c, #2e9e5e); }
+  .thumb.g2 { background: linear-gradient(135deg, #0d4525, #1a6b3c); }
+  .thumb.r1 { background: linear-gradient(135deg, #c0201e, #e03d3b); }
+  .thumb.r2 { background: linear-gradient(135deg, #7a0d0c, #c0201e); }
+  .thumb.d1 { background: linear-gradient(135deg, #222, #444); }
+  .thumb.d2 { background: linear-gradient(135deg, #111, #333); }
+  .thumb.m1 { background: linear-gradient(135deg, #2a4a3a, #1a6b3c); }
+  .thumb.m2 { background: linear-gradient(135deg, #3a1a1a, #c0201e); }
+  .thumb.m3 { background: linear-gradient(135deg, #1a2a3a, #0d4525); }
+
+  .cat-article .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .cat-article .headline a { color: var(--black); text-decoration: none; }
+  .cat-article .headline a:hover { color: var(--green); }
+  .cat-article .deck {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: #888;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 28px 24px;
+  }
+  footer .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  footer .footer-links a {
+    color: #666;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  footer .footer-links a:hover { color: var(--green); }
+  footer .footer-copy { margin-top: 16px; color: #444; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--white); }
+  ::-webkit-scrollbar-thumb { background: var(--green); }
+  html { scroll-behavior: smooth; }
+
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-main { padding-right: 0; border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+    .hero-sidebar { padding-left: 0; padding-top: 24px; }
+    .category-grid { grid-template-columns: repeat(2, 1fr); }
+    .category-grid.three { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .category-grid { grid-template-columns: 1fr; }
+    nav a { padding: 10px 12px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span class="top-bar-date">Giorno: oggi &nbsp;·&nbsp; Tempo: boh</span>
+  <div>
+    <a href="iscriviti.html">Iscriviti</a> &nbsp;|&nbsp;
+    <a href="newsletter.html">Newsletter</a> &nbsp;|&nbsp;
+    <a href="archivi.html">Archivi</a>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-title">La Voce del <span>Cettini</span></div>
+  <div class="masthead-subtitle">Vol. CXXXIX &nbsp;·&nbsp; No. 63</div>
+  <div class="masthead-tagline">"L'unico giornale dell'unica scuola di Valencia"</div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="#breaking" class="breaking">Breaking</a>
+  <a href="#politics">Politica</a>
+  <a href="#technology">Tecnologia</a>
+  <a href="#culture">Cultura</a>
+  <a href="#opinion">Gossip</a>
+</nav>
+
+<!-- HERO -->
+<main>
+  <div id="breaking">
+    <div class="container">
+      <div class="section-header">
+        <h2 style="color:var(--red);">Breaking News</h2>
+        <div class="section-header-line red"></div>
+      </div>
+      <div class="hero">
+        <div class="hero-grid">
+
+          <!-- MAIN HERO -->
+          <div class="hero-main">
+            <span class="label label-red">Breaking</span>
+            <img src="calendar.png" alt="Breaking news image" class="hero-img">
+            <h1 class="headline">
+              <a href="articolo-verifica.html">Quattordicenni accusano prof di "tortura psicologica"</a>
+            </h1>
+            <p class="deck">Il professore ha tentato di fissare una verifica la settimana successiva: impossibile a causa della verifica di religione il giorno dopo.</p>
+            <div class="byline">3 minuti fa</div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <div class="hero-sidebar">
+            <div class="section-header" style="padding-top:0">
+              <h2 style="font-size:14px;letter-spacing:0.15em;">Altre notizie</h2>
+              <div class="section-header-line"></div>
+            </div>
+            <div class="sidebar-article">
+              <img src="dove.png" alt="Article image" class="sidebar-thumb">
+              <div>
+                <div class="sidebar-headline"><a href="articolo-deodorante.html">Finito deodorante, l'aria diventa irrespirabile secondo parametri Arpa</a></div>
+                <div class="sidebar-meta">Cultura &nbsp;·&nbsp; 2h ago</div>
+              </div>
+            </div>
+            <div class="sidebar-article">
+              <img src="pizza.png" alt="Article image" class="sidebar-thumb">
+              <div>
+                <div class="sidebar-headline"><a href="articolo-pizza.html">Studente lavora da sola mentre gli altri decidono quale pizza ordinare</a></div>
+                <div class="sidebar-meta">Processo &nbsp;·&nbsp; 3h ago</div>
+              </div>
+            </div>
+            <div class="sidebar-article">
+              <img src="distruzione.png" alt="Article image" class="sidebar-thumb">
+              <div>
+                <div class="sidebar-headline"><a href="articolo-posto.html">Il cambio di posto deciso dal prof separa due migliori amiche</a></div>
+                <div class="sidebar-meta">Politica &nbsp;·&nbsp; 4h ago</div>
+              </div>
+            </div>
+            <div class="sidebar-article">
+              <img src="pistola.png" alt="Article image" class="sidebar-thumb">
+              <div>
+                <div class="sidebar-headline"><a href="articolo-strage.html">Studente pianifica strage scolastica dopo l'uscita delle materie della maturità</a></div>
+                <div class="sidebar-meta">Armi &nbsp;·&nbsp; 5h ago</div>
+              </div>
+            </div>
+            <div class="sidebar-article">
+              <img src="fumo.png" alt="Article image" class="sidebar-thumb">
+              <div>
+                <div class="sidebar-headline"><a href="articolo-sigaretta.html">Pagina del Sole 24 Ore trovata in bagno, usata per girare una sigaretta</a></div>
+                <div class="sidebar-meta">Economia &nbsp;·&nbsp; 6h ago</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POLITICS -->
+  <section id="politics" class="category-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="green">Politica</h2>
+        <div class="section-header-line green"></div>
+      </div>
+      <div class="category-grid">
+        <div class="cat-article">
+          <img src="passport.png" alt="Politics article" class="thumb">
+          <span class="label label-green">Politica</span>
+          <h3 class="headline"><a href="articolo-indipendenza.html">I due dell'ultimo banco dichiarano l'indipendenza e chiedono il passaporto.</a></h3>
+          <p class="deck">Le fonti ufficiali definiscono la proposta "un'impropria ingiuria".</p>
+        </div>
+        <div class="cat-article">
+          <img src="24.png" alt="Politics article" class="thumb">
+          <span class="label label-green">Politica</span>
+          <h3 class="headline"><a href="articolo-due.html">Studenti chiedono 4 per aver scritto il nome e cognome correttamente</a></h3>
+          <p class="deck">Tutta la classe protesta in solidarietà per il 2.</p>
+        </div>
+        <div class="cat-article">
+          <img src="caffe.png" alt="Politics article" class="thumb">
+          <span class="label label-black">Analisi</span>
+          <h3 class="headline"><a href="articolo-caffe.html">Il 98% degli studenti scambierebbe il preside con una macchinetta del caffè che dà il resto.</a></h3>
+          <p class="deck">Il restante 2% era assente il giorno del sondaggio.</p>
+        </div>
+        <div class="cat-article">
+          <img src="mim.png" class="thumb">
+          <span class="label label-green">Politica</span>
+          <h3 class="headline"><a href="articolo-governo.html">Studente ipotizza che potrebbe esistere un governo</a></h3>
+          <p class="deck">Il consiglio studentesco si è attivato per ottenere maggiori informazioni su questa potenziale scoperta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section id="technology" class="category-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="red">Tecnologia</h2>
+        <div class="section-header-line red"></div>
+      </div>
+      <div class="category-grid">
+        <div class="cat-article">
+          <img src="ipad.png" class="thumb">
+          <span class="label label-red">SHOCK</span>
+          <h3 class="headline"><a href="articolo-ipad.html">L'acquisto di un iPad Pro e di una Apple Pencil non trasferisce automaticamente la conoscenza della filosofia per osmosi.</a></h3>
+          <p class="deck">I ricercatori hanno definito la scoperta "incredibile ed inaspettata".</p>
+        </div>
+        <div class="cat-article">
+          <img src="play.png" class="thumb">
+          <span class="label label-black">Incompetenza</span>
+          <h3 class="headline"><a href="articolo-play.html">Professore non trova il tasto Play, dichiarato stato di emergenza.</a></h3>
+          <p class="deck">Essendo il tecnico malato, non ha concesso a nessuno di aiutare in quanto "non sufficientemente qualificato".</p>
+        </div>
+        <div class="cat-article">
+          <img src="wifi.png" class="thumb">
+          <span class="label label-red">WiFi</span>
+          <h3 class="headline"><a href="articolo-wifi.html">Email impiega 3 ore ad inviarsi: è record dell'istituto</a></h3>
+          <p class="deck">Il WiFi della scuola non è mai stato tanto veloce da quindici anni.</p>
+        </div>
+        <div class="cat-article">
+          <img src="essay.png" class="thumb">
+          <span class="label label-green">AI</span>
+          <h3 class="headline"><a href="articolo-tema.html">Studente beccato a copiare il tema di italiano</a></h3>
+          <p class="deck">Il metodo con cui è stato scoperto è inaspettato e mai visto, dicono gli esperti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULTURE -->
+  <section id="culture" class="category-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="red">Cultura</h2>
+        <div class="section-header-line red"></div>
+      </div>
+      <div class="category-grid">
+        <div class="cat-article">
+          <img src="preside.png" class="thumb">
+          <span class="label label-red">News</span>
+          <h3 class="headline"><a href="articolo-preside-perito.html">Studente vede il preside e lo scambia per un perito dell'assicurazione venuto a stimare i danni.</a></h3>
+          <p class="deck">"Somiglia a George Clooney", dice uno studente.</p>
+        </div>
+        <div class="cat-article">
+          <img src="topolino.png" class="thumb">
+          <span class="label label-black">Libri</span>
+          <h3 class="headline"><a href="articolo-libro.html">Studente riesce a leggere un libro intero, record</a></h3>
+          <p class="deck">Lo studente ha impiegato quattro anni per completare l'impresa.</p>
+        </div>
+        <div class="cat-article">
+          <img src="bulloni.png" class="thumb">
+          <span class="label label-red">Conferenza</span>
+          <h3 class="headline"><a href="articolo-bulloni.html">«Seguite le vostre passioni», dice l'imprenditore che ha ereditato tre fabbriche di bulloni dal nonno.</a></h3>
+          <p class="deck">Gli studenti hanno apprezzato la conferenza e l'hanno definita "illuminante".</p>
+        </div>
+        <div class="cat-article">
+          <img src="statua.png" class="thumb">
+          <span class="label label-black">Arte</span>
+          <h3 class="headline"><a href="articolo-gita.html">Prof di storia dell'arte apre la bocca in gita, cinque morti</a></h3>
+          <p class="deck">"Almeno passiamo tutti l'anno", dicono gli studenti in lacrime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOSSIP -->
+  <section id="opinion" class="category-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="red">Gossip</h2>
+        <div class="section-header-line red"></div>
+      </div>
+      <div class="category-grid three">
+        <div class="cat-article">
+          <img src="eee.png" class="thumb">
+          <span class="label label-red">Omicidio</span>
+          <h3 class="headline"><a href="articolo-rappresentanti.html">Rappresentanti di classe lapidati per turni mal gestiti</a></h3>
+          <p class="deck">"Se la sono cercata", dice il preside.</p>
+        </div>
+        <div class="cat-article">
+          <img src="cross.png" class="thumb">
+          <span class="label label-red">Religione</span>
+          <h3 class="headline"><a href="articolo-religione.html">Prof di religione muore durante lezione</a></h3>
+          <p class="deck">"Morta per cause naturali", dice la polizia. Erano 40 anni che urlava agli studenti di stare zitti.</p>
+        </div>
+        <div class="cat-article">
+          <img src="bullo.png" class="thumb">
+          <span class="label label-black">Bullismo</span>
+          <h3 class="headline"><a href="articolo-bullo.html">Bullo abbraccia primino, gli rompe una costola</a></h3>
+          <p class="deck">I professori affermano che l'avvenimento "è un grande passo avanti per la lotta contro il bullismo".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">La Voce del Cettini</div>
+  <div class="masthead-tagline" style="color:#555;font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;">"Tutto ciò che ho deciso di mostrarvi"</div>
+  <div class="footer-links" style="margin-top:20px;">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="corrections.html">Corrections</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="advertise.html">Advertise</a>
+    <a href="rss.html">RSS</a>
+  </div>
+  <div class="footer-copy">© 2026 La Voce del Cettini Media Group. Tutti i diritti riservati. Qualsiasi somiglianza ad eventi reali è totalmente coincidenziale, credo.</div>
+</footer>
+
+</body>
+
+</html>
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<link rel="shortcut icon" href="./favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<link rel="manifest" href="./site.webmanifest" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Voce del Cettini</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:wght@300;400;600&family=Barlow+Condensed:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#111;--white:#fff;--green:#1a6b3c;--green-dark:#0d4525;--red:#c0201e;--gray:#888;--border:#ddd; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Source Serif 4',Georgia,serif;background:var(--white);color:var(--black);font-size:17px;line-height:1.7}
+  .top-bar{background:var(--black);color:#aaa;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 24px;display:flex;justify-content:space-between}
+  .top-bar a{color:#aaa;text-decoration:none}.top-bar a:hover{color:#fff}
+  .masthead{text-align:center;padding:20px 24px 14px;border-bottom:4px double var(--black)}
+  .masthead::before{content:'';display:block;height:2px;background:var(--red);margin-bottom:14px}
+  .masthead-title{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,72px);font-weight:900;line-height:.9;letter-spacing:-2px;text-transform:uppercase}
+  .masthead-title span{color:var(--red)}
+  .masthead-title a{color:var(--black);text-decoration:none}
+  nav{background:var(--black);display:flex;align-items:center;justify-content:center;overflow-x:auto}
+  nav a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#ccc;text-decoration:none;padding:12px 18px;border-right:1px solid #222;white-space:nowrap}
+  nav a:first-child{border-left:1px solid #222}
+  nav a:hover{color:#fff;background:var(--green-dark)}
+  nav a.breaking{color:#fff;background:var(--red)}
+  .container{max-width:780px;margin:0 auto;padding:0 24px}
+  .article-header{padding:40px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
+  .label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:inline-block;margin-bottom:12px;padding:2px 8px}
+  .label-red{color:#fff;background:var(--red)}
+  .label-green{color:#fff;background:var(--green)}
+  .label-black{color:#fff;background:var(--black)}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.1;letter-spacing:-.5px;margin-bottom:16px}
+  .deck{font-size:20px;color:#444;line-height:1.6;margin-bottom:16px;font-style:italic}
+  .byline{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+  .hero-img{width:100%;aspect-ratio:16/7;object-fit:cover;margin:32px 0;display:block}
+  .hero-placeholder{width:100%;aspect-ratio:16/7;background:linear-gradient(135deg,#c0201e 0%,#7a0d0c 40%,#111 100%);margin:32px 0}
+  .article-body p{margin-bottom:22px;color:#222}
+  .article-body p:first-child::first-letter{font-family:'Playfair Display',serif;font-size:4.5em;font-weight:900;float:left;line-height:.8;margin:4px 8px 0 0;color:var(--red)}
+  .pull-quote{border-left:4px solid var(--red);padding:16px 24px;margin:32px 0;font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--green-dark)}
+  .back-link{display:inline-block;margin:40px 0;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);text-decoration:none;border-bottom:2px solid var(--green)}
+  .back-link:hover{color:var(--red);border-color:var(--red)}
+  footer{background:var(--black);color:#888;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:28px 24px;margin-top:60px}
+  footer .footer-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-1px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <span>La Voce del Cettini &nbsp;·&nbsp; Vol. CXXXIX · No. 63</span>
+  <div><a href="iscriviti.html">Iscriviti</a> &nbsp;|&nbsp; <a href="newsletter.html">Newsletter</a> &nbsp;|&nbsp; <a href="archivi.html">Archivi</a></div>
+</div>
+<header class="masthead">
+  <div class="masthead-title"><a href="index.html">La Voce del <span>Cettini</span></a></div>
+</header>
+<nav>
+  <a href="index.html#breaking" class="breaking">Breaking</a>
+  <a href="index.html#politics">Politica</a>
+  <a href="index.html#technology">Tecnologia</a>
+  <a href="index.html#culture">Cultura</a>
+  <a href="index.html#opinion">Gossip</a>
+</nav>
+<div class="container">
+  <article>
+    <div class="article-header">
+      <span class="label label-red">Breaking</span>
+      <h1>Quattordicenni accusano prof di "tortura psicologica"</h1>
+      <p class="deck">Il professore ha tentato di fissare una verifica la settimana successiva: impossibile a causa della verifica di religione il giorno dopo.</p>
+      <div class="byline">3 minuti fa &nbsp;·&nbsp; Redazione Breaking News</div>
+    </div>
+    <img src="calendar.png" alt="Calendario scolastico" class="hero-img" onerror="this.style.cssText='width:100%;aspect-ratio:16/7;background:linear-gradient(135deg,#c0201e,#7a0d0c 40%,#111);display:block;margin:32px 0'">
+    <div class="article-body">
+      <p>Una grave crisi ci è riportata dai nostri più prossimi collaboratori: si dice infatti che un professore, nuovo alle dure leggi del Cettini, abbia tentato di fissare una verifica per la settimana successiva.</p>
+      <p>Immediatamente, e prevedibilmente, non solo l'intera classe, ancora non ben identificata dai nostri reporter, ma l'intera scuola è insorsa contro questa ingiuria. Le ragioni delle proteste sono molteplici, ma la più importante è la presenza della temuta verifica di religione del giorno successivo, per la quale gli studenti necessiteranno il massimo impegno durante i giorni precedenti. Inoltre, è chiaro che una sola settimana sia decisamente troppo poco per prepararsi ad una verifica. Ecco cosa ha detto una studentessa:</p>
+      <div class="pull-quote">"Sì, ceh, ridicolo. Ma poi una settimana è troppo presto per dircelo, ceh fammi capire, io devo stare terrorizzata una settimana per la sua verifica? Nah vabbè."</div>
+      <p>I rappresentanti di classe hanno immediatamente convocato un'assemblea straordinaria nel corridoio del primo piano, redigendo un documento di protesta in tre lingue: italiano, emoji e un dialetto locale incomprensibile. Il documento è stato consegnato al professore il quale, secondo fonti vicine alla vicenda, "ha letto la prima riga e poi ha detto che comunque la fa giovedì".</p>
+      <p>Le famiglie degli studenti sono state contattate dagli studenti in ricerca di supporto. Una madre ha dichiarato di essere "molto preoccupata per il carico eccessivo", aggiungendo di non ricordare l'ultimo fine settimana in cui suo figlio avesse studiato qualcosa. Il padre di un altro studente ha invece espresso solidarietà al professore, ma ha preferito rimanere anonimo per "motivi di sicurezza".</p>
+      <p>Al momento non si hanno maggiori informazioni. Le notizie saranno aggiornate per tempo non appena si saprà di più.</p>
+    </div>
+    <a href="index.html" class="back-link">← Torna alla home</a>
+  </article>
+</div>
+<footer>
+  <div class="footer-title">La Voce del Cettini</div>
+  <div style="color:#555;font-style:italic;font-family:'Source Serif 4',serif;font-size:13px;">"Tutto ciò che ho deciso di mostrarvi"</div>
+  <div style="margin-top:12px;color:#444">© 2026 La Voce del Cettini Media Group. Tutti i diritti riservati.</div>
+</footer>
+</body>
+
+</html>
+
+
